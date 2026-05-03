@@ -2,7 +2,7 @@
   "name": "jira-portal",
   "displayName": "Jira Portal",
   "description": "Browse Jira features and launch the /feature skill in Claude Code.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "axon",
   "engines": {
     "vscode": "^1.85.0"
