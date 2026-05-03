@@ -1,10 +1,10 @@
-# Axon Feature Builder
+# Jira Portal
 
 VS Code extension that browses Jira features and launches the `/feature` skill in Claude Code with one click. Billing flows through the dev's logged-in Claude Code session — no API key, no per-token charges.
 
 ## What you get
 
-- **Activity-bar icon → "Axon Features" sidebar** with two views:
+- **Activity-bar icon → "Jira Portal" sidebar** with two views:
   - **Active Features** — file-watches `.claude-feature-context/` in the workspace; lists each in-progress feature with its story-completion count. Click to open the feature's `PLAN.md`.
   - **Jira** — entry point that opens the Jira Browser tab.
 - **Jira Browser** (webview tab) — modern card-based UI:
@@ -36,12 +36,12 @@ npm run watch      # rebuild on file changes
 npm run typecheck  # tsc --noEmit on both projects
 ```
 
-Press `F5` in VS Code from this folder to launch an Extension Development Host with the extension loaded. The "Axon Features" icon appears in the activity bar.
+Press `F5` in VS Code from this folder to launch an Extension Development Host with the extension loaded. The "Jira Portal" icon appears in the activity bar.
 
 ## Package and install
 
 ```powershell
-npm run package    # produces axon-feature-builder-0.1.0.vsix
+npm run package    # produces jira-portal-0.1.0.vsix
 ```
 
 Then in VS Code: `Extensions → ⋯ menu → Install from VSIX…` and pick the `.vsix`. Or distribute it to the team via a private extension registry / shared folder.

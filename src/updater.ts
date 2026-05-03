@@ -5,7 +5,7 @@ import * as path from 'path';
 
 const REPO = 'rmeikle-dev/jiraportal';
 const RELEASES_API = `https://api.github.com/repos/${REPO}/releases/latest`;
-const LAST_CHECK_KEY = 'axonFeatureBuilder.lastUpdateCheck';
+const LAST_CHECK_KEY = 'jiraPortal.lastUpdateCheck';
 const CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 interface GitHubRelease {
@@ -55,7 +55,7 @@ export async function checkForUpdates(
     }
 
     const choice = await vscode.window.showInformationMessage(
-      `Axon Feature Builder ${latestVersion} is available (you have ${current}).`,
+      `Jira Portal ${latestVersion} is available (you have ${current}).`,
       'Install update',
       'View release',
       'Later'
@@ -77,7 +77,7 @@ export async function checkForUpdates(
 
 async function fetchLatest(): Promise<GitHubRelease | null> {
   const res = await fetch(RELEASES_API, {
-    headers: { 'User-Agent': 'axon-feature-builder', Accept: 'application/vnd.github+json' }
+    headers: { 'User-Agent': 'jira-portal', Accept: 'application/vnd.github+json' }
   });
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`GitHub ${res.status}`);
@@ -102,7 +102,7 @@ async function installUpdate(downloadUrl: string, filename: string): Promise<voi
     { location: vscode.ProgressLocation.Notification, title: 'Downloading update…' },
     async () => {
       const res = await fetch(downloadUrl, {
-        headers: { 'User-Agent': 'axon-feature-builder' }
+        headers: { 'User-Agent': 'jira-portal' }
       });
       if (!res.ok) throw new Error(`Download failed: HTTP ${res.status}`);
       const buffer = Buffer.from(await res.arrayBuffer());

@@ -1,6 +1,6 @@
 {
-  "name": "axon-feature-builder",
-  "displayName": "Axon Feature Builder",
+  "name": "jira-portal",
+  "displayName": "Jira Portal",
   "description": "Browse Jira features and launch the /feature skill in Claude Code.",
   "version": "0.1.0",
   "publisher": "axon",
@@ -14,53 +14,53 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "axonFeatureBuilder",
-          "title": "Axon Features",
+          "id": "jiraPortal",
+          "title": "Jira Portal",
           "icon": "resources/icon.svg"
         }
       ]
     },
     "views": {
-      "axonFeatureBuilder": [
+      "jiraPortal": [
         {
-          "id": "axonFeatureBuilder.activeFeatures",
+          "id": "jiraPortal.activeFeatures",
           "name": "Active Features"
         },
         {
-          "id": "axonFeatureBuilder.jira",
+          "id": "jiraPortal.jira",
           "name": "Jira"
         }
       ]
     },
     "commands": [
       {
-        "command": "axonFeatureBuilder.openJiraBrowser",
-        "title": "Axon: Open Jira Browser"
+        "command": "jiraPortal.openJiraBrowser",
+        "title": "Jira Portal: Open Jira Browser"
       },
       {
-        "command": "axonFeatureBuilder.refreshActiveFeatures",
-        "title": "Axon: Refresh Active Features",
+        "command": "jiraPortal.refreshActiveFeatures",
+        "title": "Jira Portal: Refresh Active Features",
         "icon": "$(refresh)"
       },
       {
-        "command": "axonFeatureBuilder.buildFeature",
-        "title": "Axon: Build Feature with Claude"
+        "command": "jiraPortal.buildFeature",
+        "title": "Jira Portal: Build Feature with Claude"
       },
       {
-        "command": "axonFeatureBuilder.checkForUpdates",
-        "title": "Axon: Check for Updates"
+        "command": "jiraPortal.checkForUpdates",
+        "title": "Jira Portal: Check for Updates"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "axonFeatureBuilder.refreshActiveFeatures",
-          "when": "view == axonFeatureBuilder.activeFeatures",
+          "command": "jiraPortal.refreshActiveFeatures",
+          "when": "view == jiraPortal.activeFeatures",
           "group": "navigation"
         },
         {
-          "command": "axonFeatureBuilder.openJiraBrowser",
-          "when": "view == axonFeatureBuilder.jira",
+          "command": "jiraPortal.openJiraBrowser",
+          "when": "view == jiraPortal.jira",
           "group": "navigation"
         }
       ]

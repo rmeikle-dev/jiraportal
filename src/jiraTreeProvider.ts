@@ -6,7 +6,7 @@ class JiraEntryItem extends vscode.TreeItem {
     super('Open Jira Browser', vscode.TreeItemCollapsibleState.None);
     this.iconPath = new vscode.ThemeIcon('search');
     this.command = {
-      command: 'axonFeatureBuilder.openJiraBrowser',
+      command: 'jiraPortal.openJiraBrowser',
       title: 'Open Jira Browser'
     };
   }

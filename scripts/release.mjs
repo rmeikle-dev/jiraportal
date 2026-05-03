@@ -33,7 +33,7 @@ const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
 const version = pkg.version;
 console.log(`\nBumped to v${version}\n`);
 
-// 2. Build + package (produces axon-feature-builder-<version>.vsix).
+// 2. Build + package (produces jira-portal-<version>.vsix).
 run('npm run package');
 
 // 3. Commit + tag + push.
@@ -44,7 +44,7 @@ run('git push');
 run('git push --tags');
 
 // 4. Create GitHub release with the .vsix attached, if gh CLI is installed.
-const vsix = `axon-feature-builder-${version}.vsix`;
+const vsix = `jira-portal-${version}.vsix`;
 if (tryRun('gh --version')) {
   run(
     `gh release create v${version} ${vsix} --title "v${version}" --notes "Release v${version}"`

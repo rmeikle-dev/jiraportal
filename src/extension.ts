@@ -12,15 +12,15 @@ export function activate(context: vscode.ExtensionContext) {
   const jira = new JiraTreeProvider();
 
   context.subscriptions.push(
-    vscode.window.registerTreeDataProvider('axonFeatureBuilder.activeFeatures', activeFeatures),
-    vscode.window.registerTreeDataProvider('axonFeatureBuilder.jira', jira),
-    vscode.commands.registerCommand('axonFeatureBuilder.openJiraBrowser', () =>
+    vscode.window.registerTreeDataProvider('jiraPortal.activeFeatures', activeFeatures),
+    vscode.window.registerTreeDataProvider('jiraPortal.jira', jira),
+    vscode.commands.registerCommand('jiraPortal.openJiraBrowser', () =>
       JiraBrowserPanel.show(context)
     ),
-    vscode.commands.registerCommand('axonFeatureBuilder.refreshActiveFeatures', () =>
+    vscode.commands.registerCommand('jiraPortal.refreshActiveFeatures', () =>
       activeFeatures.refresh()
     ),
-    vscode.commands.registerCommand('axonFeatureBuilder.buildFeature', async () => {
+    vscode.commands.registerCommand('jiraPortal.buildFeature', async () => {
       const key = await vscode.window.showInputBox({
         prompt: 'Jira feature key',
         placeHolder: 'e.g. AX-966',
@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
       });
       if (key) await buildFeature(key);
     }),
-    vscode.commands.registerCommand('axonFeatureBuilder.checkForUpdates', () =>
+    vscode.commands.registerCommand('jiraPortal.checkForUpdates', () =>
       checkForUpdates(context, { force: true })
     ),
     activeFeatures

@@ -15,7 +15,7 @@ export class JiraBrowserPanel {
       return;
     }
     const panel = vscode.window.createWebviewPanel(
-      'axonJiraBrowser',
+      'jiraPortalBrowser',
       'Jira Browser',
       column ?? vscode.ViewColumn.One,
       {
