@@ -3,6 +3,7 @@ import { ActiveFeaturesProvider } from './activeFeaturesProvider';
 import { JiraTreeProvider } from './jiraTreeProvider';
 import { JiraBrowserPanel } from './jiraBrowserPanel';
 import { buildFeature } from './launcher';
+import { checkForUpdates } from './updater';
 
 export function activate(context: vscode.ExtensionContext) {
   const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
@@ -27,10 +28,14 @@ export function activate(context: vscode.ExtensionContext) {
       });
       if (key) await buildFeature(key);
     }),
+    vscode.commands.registerCommand('axonFeatureBuilder.checkForUpdates', () =>
+      checkForUpdates(context, { force: true })
+    ),
     activeFeatures
   );
 
   JiraBrowserPanel.show(context);
+  void checkForUpdates(context);
 }
 
 export function deactivate() {}

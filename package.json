@@ -45,6 +45,10 @@
       {
         "command": "axonFeatureBuilder.buildFeature",
         "title": "Axon: Build Feature with Claude"
+      },
+      {
+        "command": "axonFeatureBuilder.checkForUpdates",
+        "title": "Axon: Check for Updates"
       }
     ],
     "menus": {
@@ -67,6 +71,9 @@
     "build:css": "tailwindcss -i ./webview/styles.css -o ./dist/webview.css --minify",
     "watch": "node esbuild.js --watch & tailwindcss -i ./webview/styles.css -o ./dist/webview.css --watch",
     "package": "npm run build && vsce package",
+    "release:patch": "node scripts/release.mjs patch",
+    "release:minor": "node scripts/release.mjs minor",
+    "release:major": "node scripts/release.mjs major",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p webview/tsconfig.json"
   },
   "devDependencies": {
