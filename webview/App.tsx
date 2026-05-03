@@ -7,7 +7,7 @@ import { ProjectSelect } from './components/ProjectSelect';
 import { SelectionBar } from './components/SelectionBar';
 import type { JiraIssue, JiraProject } from '../src/jira';
 
-const DEFAULT_JQL = 'issuetype = Feature ORDER BY updated DESC';
+const DEFAULT_JQL = 'issuetype = Feature ORDER BY summary ASC';
 
 function composeJql(projectKey: string | null, baseJql: string): string {
   if (!projectKey) return baseJql;

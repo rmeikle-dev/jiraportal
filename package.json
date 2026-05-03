@@ -25,10 +25,6 @@
     "views": {
       "jiraPortal": [
         {
-          "id": "jiraPortal.activeFeatures",
-          "name": "Active Features"
-        },
-        {
           "id": "jiraPortal.jira",
           "name": "Jira"
         }
@@ -38,11 +34,6 @@
       {
         "command": "jiraPortal.openJiraBrowser",
         "title": "Jira Portal: Open Jira Browser"
-      },
-      {
-        "command": "jiraPortal.refreshActiveFeatures",
-        "title": "Jira Portal: Refresh Active Features",
-        "icon": "$(refresh)"
       },
       {
         "command": "jiraPortal.buildFeature",
@@ -55,11 +46,6 @@
     ],
     "menus": {
       "view/title": [
-        {
-          "command": "jiraPortal.refreshActiveFeatures",
-          "when": "view == jiraPortal.activeFeatures",
-          "group": "navigation"
-        },
         {
           "command": "jiraPortal.openJiraBrowser",
           "when": "view == jiraPortal.jira",

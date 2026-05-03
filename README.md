@@ -4,10 +4,7 @@ VS Code extension that browses Jira features and launches the `/feature` skill i
 
 ## What you get
 
-- **Activity-bar icon → "Jira Portal" sidebar** with two views:
-  - **Active Features** — file-watches `.claude-feature-context/` in the workspace; lists each in-progress feature with its story-completion count. Click to open the feature's `PLAN.md`.
-  - **Jira** — entry point that opens the Jira Browser tab.
-- **Jira Browser** (webview tab) — modern card-based UI:
+- **Jira Browser** (webview tab, opens automatically on startup) — modern card-based UI:
   - JQL search with quick-filter presets ("My open features", "My active stories", etc.)
   - Issue cards with status pill, assignee, type
   - **Build with Claude** button per card → fires `vscode://anthropic.claude-code/open?prompt=/feature%20<KEY>`, opening Claude Code with the prompt prefilled
@@ -36,7 +33,7 @@ npm run watch      # rebuild on file changes
 npm run typecheck  # tsc --noEmit on both projects
 ```
 
-Press `F5` in VS Code from this folder to launch an Extension Development Host with the extension loaded. The "Jira Portal" icon appears in the activity bar.
+Press `F5` in VS Code from this folder to launch an Extension Development Host with the extension loaded. The Jira Browser tab opens automatically.
 
 ## Package and install
 
@@ -53,8 +50,6 @@ src/                          extension host (Node)
 ├── extension.ts              activation + command registration
 ├── jira.ts                   REST client, env-var auth
 ├── launcher.ts               URL handler firing
-├── activeFeaturesProvider.ts file-watched tree view
-├── jiraTreeProvider.ts       sidebar entry for Jira Browser
 ├── jiraBrowserPanel.ts       webview panel + message routing
 └── messages.ts               typed messages between host and webview
 
@@ -78,4 +73,4 @@ vscode://anthropic.claude-code/open?prompt=/feature%20AX-966
 
 VS Code routes this to the installed Claude Code extension, which opens a new tab with the prompt prefilled. The user hits Send (or it auto-sends — depends on the Claude Code version), and Claude executes against the dev's logged-in subscription.
 
-This sidesteps the Agent SDK's API-key billing requirement entirely. The trade-off: there's no programmatic feedback loop — the extension can't know when the build finishes or what Claude said. That's why progress is observed via the **Active Features** tree, which file-watches `.claude-feature-context/` for changes the skill writes to disk.
+This sidesteps the Agent SDK's API-key billing requirement entirely. The trade-off: there's no programmatic feedback loop — the extension can't know when the build finishes or what Claude said. Progress is observed by inspecting `.claude-feature-context/` in the workspace, which the skill writes to disk.

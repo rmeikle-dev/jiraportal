@@ -8,7 +8,7 @@ interface Props {
 
 const PRESETS: Array<{ label: string; jql: string }> = [
   { label: 'My open features', jql: 'assignee = currentUser() AND issuetype = Feature AND statusCategory != Done ORDER BY updated DESC' },
-  { label: 'All features', jql: 'issuetype = Feature ORDER BY updated DESC' },
+  { label: 'All features', jql: 'issuetype = Feature ORDER BY summary ASC' },
   { label: 'My active stories', jql: 'assignee = currentUser() AND statusCategory = "In Progress" ORDER BY updated DESC' },
   { label: 'Recently updated', jql: 'ORDER BY updated DESC' }
 ];

@@ -47,7 +47,10 @@ export function IssueCard({
     childState.state === 'loaded' ? childState.issues.length : null;
 
   return (
-    <div className="group relative rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:bg-card-hover">
+    <div
+      onClick={() => onToggleExpand(issue.key)}
+      className="group relative cursor-pointer rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:bg-card-hover"
+    >
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 text-sm text-muted">
@@ -76,33 +79,39 @@ export function IssueCard({
 
       <div className="mt-5 flex items-center gap-2">
         <button
-          onClick={() => onBuild(issue.key)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onBuild(issue.key);
+          }}
           className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-fg transition-colors hover:bg-accent-hover"
         >
           <Sparkles size={14} />
           Build with Claude
         </button>
         <button
-          onClick={() => onOpen(issue.url)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpen(issue.url);
+          }}
           className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium text-fg transition-colors hover:bg-card-hover"
         >
           <ExternalLink size={14} />
           Open in Jira
         </button>
-        <button
-          onClick={() => onToggleExpand(issue.key)}
-          className="ml-auto inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-sm text-muted transition-colors hover:bg-card-hover hover:text-fg"
-        >
+        <span className="ml-auto inline-flex items-center gap-1.5 px-3 py-2 text-sm text-muted">
           {childCount !== null ? `${childCount} stor${childCount === 1 ? 'y' : 'ies'}` : 'Stories'}
           <ChevronDown
             size={14}
             className={`transition-transform ${expanded ? 'rotate-180' : ''}`}
           />
-        </button>
+        </span>
       </div>
 
       {expanded && (
-        <div className="mt-5 border-t border-border pt-4">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="mt-5 cursor-default border-t border-border pt-4"
+        >
           <Children
             state={childState}
             selectedStories={selectedStories}
