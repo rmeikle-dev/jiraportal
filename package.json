@@ -45,7 +45,8 @@
       },
       {
         "command": "jiraPortal.openFeatureRuns",
-        "title": "Jira Portal: Open Feature Runs"
+        "title": "Jira Portal: Open Feature Runs",
+        "icon": "$(open-preview)"
       },
       {
         "command": "jiraPortal.refreshFeatureRuns",
@@ -65,9 +66,14 @@
           "group": "navigation"
         },
         {
+          "command": "jiraPortal.openFeatureRuns",
+          "when": "view == jiraPortal.featureRuns",
+          "group": "navigation@1"
+        },
+        {
           "command": "jiraPortal.refreshFeatureRuns",
           "when": "view == jiraPortal.featureRuns",
-          "group": "navigation"
+          "group": "navigation@2"
         }
       ]
     }
