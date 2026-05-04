@@ -1,7 +1,7 @@
 {
   "name": "jira-portal",
   "displayName": "Jira Portal",
-  "description": "Browse Jira features and launch the /feature skill in Claude Code.",
+  "description": "Browse Jira features and launch the /jira-feature-builder skill in Claude Code.",
   "version": "0.1.2",
   "publisher": "axon",
   "engines": {

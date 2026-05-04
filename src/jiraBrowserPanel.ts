@@ -85,7 +85,7 @@ export class JiraBrowserPanel {
       case 'build':
         await buildFeature(msg.key);
         vscode.window.showInformationMessage(
-          `Opening Claude Code with /feature ${msg.key}`
+          `Opening Claude Code with /jira-feature-builder ${msg.key}`
         );
         return;
       case 'buildSelection':

@@ -12,9 +12,9 @@ export async function launchInClaudeCode(prompt: string): Promise<void> {
 }
 
 export async function buildFeature(featureKey: string): Promise<void> {
-  await launchInClaudeCode(`/feature ${featureKey}`);
+  await launchInClaudeCode(`/jira-feature-builder ${featureKey}`);
 }
 
 export async function buildStorySelection(storyKeys: string[]): Promise<void> {
-  await launchInClaudeCode(`/feature (only stories, ${storyKeys.join(', ')})`);
+  await launchInClaudeCode(`/jira-feature-builder (only stories, ${storyKeys.join(', ')})`);
 }

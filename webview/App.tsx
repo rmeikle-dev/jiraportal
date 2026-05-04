@@ -113,7 +113,7 @@ export function App() {
         <h1 className="text-3xl font-semibold tracking-tight text-fg">Jira Browser</h1>
         <p className="text-base text-muted">
           Find a feature, click <span className="text-fg">Build with Claude</span> — opens
-          Claude Code with <code className="rounded bg-card px-1.5 py-0.5 text-sm">/feature {'{KEY}'}</code> ready to send.
+          Claude Code with <code className="rounded bg-card px-1.5 py-0.5 text-sm">/jira-feature-builder {'{KEY}'}</code> ready to send.
         </p>
       </header>
 

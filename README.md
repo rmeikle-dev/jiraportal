@@ -1,13 +1,13 @@
 # Jira Portal
 
-VS Code extension that browses Jira features and launches the `/feature` skill in Claude Code with one click. Billing flows through the dev's logged-in Claude Code session — no API key, no per-token charges.
+VS Code extension that browses Jira features and launches the `/jira-feature-builder` skill in Claude Code with one click. Billing flows through the dev's logged-in Claude Code session — no API key, no per-token charges.
 
 ## What you get
 
 - **Jira Browser** (webview tab, opens automatically on startup) — modern card-based UI:
   - JQL search with quick-filter presets ("My open features", "My active stories", etc.)
   - Issue cards with status pill, assignee, type
-  - **Build with Claude** button per card → fires `vscode://anthropic.claude-code/open?prompt=/feature%20<KEY>`, opening Claude Code with the prompt prefilled
+  - **Build with Claude** button per card → fires `vscode://anthropic.claude-code/open?prompt=/jira-feature-builder%20<KEY>`, opening Claude Code with the prompt prefilled
   - **Open in Jira** button → opens the issue in the browser
 
 The webview themes natively with the editor (light/dark/high-contrast) by binding Tailwind colors to VS Code CSS variables.
@@ -68,7 +68,7 @@ webview/                      React app shown inside the panel
 The extension never calls the Anthropic API. When the user clicks **Build with Claude**, the extension fires:
 
 ```
-vscode://anthropic.claude-code/open?prompt=/feature%20AX-966
+vscode://anthropic.claude-code/open?prompt=/jira-feature-builder%20AX-966
 ```
 
 VS Code routes this to the installed Claude Code extension, which opens a new tab with the prompt prefilled. The user hits Send (or it auto-sends — depends on the Claude Code version), and Claude executes against the dev's logged-in subscription.
