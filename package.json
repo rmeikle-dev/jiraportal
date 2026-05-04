@@ -27,6 +27,10 @@
         {
           "id": "jiraPortal.jira",
           "name": "Jira"
+        },
+        {
+          "id": "jiraPortal.featureRuns",
+          "name": "Feature Runs"
         }
       ]
     },
@@ -40,6 +44,15 @@
         "title": "Jira Portal: Build Feature with Claude"
       },
       {
+        "command": "jiraPortal.openFeatureRuns",
+        "title": "Jira Portal: Open Feature Runs"
+      },
+      {
+        "command": "jiraPortal.refreshFeatureRuns",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
         "command": "jiraPortal.checkForUpdates",
         "title": "Jira Portal: Check for Updates"
       }
@@ -50,19 +63,26 @@
           "command": "jiraPortal.openJiraBrowser",
           "when": "view == jiraPortal.jira",
           "group": "navigation"
+        },
+        {
+          "command": "jiraPortal.refreshFeatureRuns",
+          "when": "view == jiraPortal.featureRuns",
+          "group": "navigation"
         }
       ]
     }
   },
   "scripts": {
-    "build": "node esbuild.js && npm run build:css",
+    "build": "npm run vendor:types && node esbuild.js && npm run build:css",
     "build:css": "tailwindcss -i ./webview/styles.css -o ./dist/webview.css --minify",
     "watch": "node esbuild.js --watch & tailwindcss -i ./webview/styles.css -o ./dist/webview.css --watch",
     "package": "npm run build && vsce package",
     "release:patch": "node scripts/release.mjs patch",
     "release:minor": "node scripts/release.mjs minor",
     "release:major": "node scripts/release.mjs major",
-    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p webview/tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p webview/tsconfig.json",
+    "vendor:types": "node scripts/vendor-types.mjs",
+    "vendor:types:check": "node scripts/vendor-types.mjs --check"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

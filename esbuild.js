@@ -23,7 +23,7 @@ const webviewConfig = {
   target: 'es2022',
   sourcemap: true,
   jsx: 'automatic',
-  loader: { '.tsx': 'tsx', '.ts': 'ts' },
+  loader: { '.tsx': 'tsx', '.ts': 'ts', '.css': 'text' },
   logLevel: 'info',
   define: { 'process.env.NODE_ENV': '"production"' }
 };

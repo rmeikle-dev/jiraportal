@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npm run *)",
+      "Bash(where gh *)",
+      "Bash(gh --version)",
+      "Bash(code --list-extensions)",
+      "PowerShell(& code --list-extensions)"
+    ]
+  }
+}

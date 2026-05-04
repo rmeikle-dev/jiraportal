@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 1,
+  "runId": "01HQRZN8X7K3M2VYB4PQT9C5DA",
+  "featureKey": "AX-966",
+  "featureTitle": "Quote Builder",
+  "featureUrl": "https://trgscreen.atlassian.net/browse/AX-966",
+  "repo": {
+    "root": "c:\\projects\\axon-clients",
+    "name": "axon-clients",
+    "baseBranch": "main"
+  },
+  "session": {
+    "id": "30df2d43-1748-4e21-9c36-bea48a1f7c12",
+    "transcriptPath": "C:\\Users\\rmeikle\\.claude\\projects\\c--projects-axon-clients\\30df2d43-1748-4e21-9c36-bea48a1f7c12.jsonl",
+    "claudeVersion": "claude-opus-4-7"
+  },
+  "startedAt": "2026-05-04T14:00:00.000Z",
+  "endedAt": null,
+  "status": "running",
+  "totals": {
+    "durationMs": 895000,
+    "inputTokens": 350900,
+    "outputTokens": 47900,
+    "cacheReadTokens": 1232400,
+    "cacheCreationTokens": 99500,
+    "costUsd": 2.31,
+    "toolCalls": 24,
+    "agentCalls": 14
+  },
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Config check + interview",
+      "startedAt": "2026-05-04T14:00:00.000Z",
+      "endedAt": "2026-05-04T14:00:45.000Z",
+      "status": "completed"
+    },
+    {
+      "id": "phase-2",
+      "name": "Fetch context",
+      "startedAt": "2026-05-04T14:00:45.000Z",
+      "endedAt": "2026-05-04T14:02:30.000Z",
+      "status": "completed",
+      "notes": "Fetched 5 stories; 4 had Figma frames (12 frames total). AX-969 had no design assets."
+    },
+    {
+      "id": "phase-3",
+      "name": "Analyze + ask gap questions",
+      "startedAt": "2026-05-04T14:02:30.000Z",
+      "endedAt": "2026-05-04T14:04:15.000Z",
+      "status": "completed",
+      "notes": "Parallel analyzer batch: 5 stories analyzed concurrently in ~90s. 3 gap questions raised, all answered."
+    },
+    {
+      "id": "phase-4",
+      "name": "Plan + confirm",
+      "startedAt": "2026-05-04T14:04:15.000Z",
+      "endedAt": "2026-05-04T14:05:30.000Z",
+      "status": "completed",
+      "notes": "User revised plan once before confirming — reordered AX-969 to run after AX-968."
+    },
+    {
+      "id": "phase-5",
+      "name": "Implement each story sequentially",
+      "startedAt": "2026-05-04T14:05:30.000Z",
+      "endedAt": null,
+      "status": "running"
+    },
+    {
+      "id": "phase-6",
+      "name": "Return branch + create-PR URLs",
+      "startedAt": null,
+      "endedAt": null,
+      "status": "pending"
+    }
+  ],
+  "stories": [
+    {
+      "key": "AX-967",
+      "title": "Product catalog model",
+      "url": "https://trgscreen.atlassian.net/browse/AX-967",
+      "order": 1,
+      "status": "shipped",
+      "branch": {
+        "name": "ax-966-product-catalog-model",
+        "base": "main",
+        "createPrUrl": "https://bitbucket.org/trgscreen/axon-clients/pull-requests/new?source=ax-966-product-catalog-model&dest=main"
+      },
+      "analysis": {
+        "storyKey": "AX-967",
+        "intent": "Define a Product type and a product catalog store that other stories can consume when selecting and displaying products in the report wizard.",
+        "surfaces": ["no user-facing surface yet; foundational data layer for downstream wizard steps"],
+        "behaviors": [
+          "products are loaded once on app boot and cached in the catalog store",
+          "consumer reads catalog via selectProducts(ids) selector"
+        ],
+        "produces": [
+          { "name": "Product", "kind": "type" },
+          { "name": "product-catalog-store", "kind": "state" },
+          { "name": "selectProducts", "kind": "selector" }
+        ],
+        "consumes": [{ "name": "products-api", "kind": "endpoint" }],
+        "frames": [{ "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-967\\figma\\product-data-shape.png", "depicts": "annotated diagram of Product type fields" }],
+        "ambiguities": ["no copy specified for catalog-load-error toast"],
+        "ticketDesignConflicts": [],
+        "openQuestions": []
+      },
+      "plan": {
+        "files": [
+          "apps/web/src/features/products/types.ts",
+          "apps/web/src/features/products/catalogStore.ts",
+          "apps/web/src/features/products/selectors.ts"
+        ],
+        "notes": [
+          "Define Product type matching Figma annotation (id, name, sku, category, listPrice).",
+          "Catalog store uses Zustand to match repo convention.",
+          "Loader fires from app root; expose useProducts() hook for consumers."
+        ]
+      },
+      "dependsOn": [],
+      "verification": {
+        "iterations": [
+          {
+            "index": 1,
+            "startedAt": "2026-05-04T14:07:30.000Z",
+            "endedAt": "2026-05-04T14:08:00.000Z",
+            "discrepancies": [],
+            "outcome": "matched"
+          }
+        ],
+        "finalState": "matched"
+      },
+      "contextDir": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-967",
+      "artifacts": {
+        "ticketMd": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-967\\ticket.md",
+        "framesJson": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-967\\figma\\frames.json",
+        "framePngs": ["c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-967\\figma\\product-data-shape.png"],
+        "implementationPng": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-967\\implementation.png"
+      },
+      "timing": {
+        "firstEventAt": "2026-05-04T14:05:30.000Z",
+        "lastEventAt": "2026-05-04T14:08:00.000Z",
+        "durationMs": 150000
+      },
+      "tokens": { "input": 84300, "output": 11200, "cacheRead": 312000, "cacheCreation": 24500 }
+    },
+    {
+      "key": "AX-968",
+      "title": "Select Products step",
+      "url": "https://trgscreen.atlassian.net/browse/AX-968",
+      "order": 2,
+      "status": "shipped",
+      "branch": {
+        "name": "ax-966-select-products-step",
+        "base": "ax-966-product-catalog-model",
+        "createPrUrl": "https://bitbucket.org/trgscreen/axon-clients/pull-requests/new?source=ax-966-select-products-step&dest=ax-966-product-catalog-model"
+      },
+      "analysis": {
+        "storyKey": "AX-968",
+        "intent": "Build the product-selection step in the Create Report wizard — user picks products from the catalog and they accumulate in a selection table with remove/clear affordances.",
+        "surfaces": [
+          "Create Report wizard — step 2 (product selection)",
+          "product-picker modal launched from \"Add Product\" button",
+          "selection table with checkbox + name + remove column"
+        ],
+        "behaviors": [
+          "user clicks Add Product → product-picker modal opens",
+          "user selects a product in the modal → modal closes; row appended to selection table",
+          "user clicks remove icon on a row → row removed; selectedProducts state updated",
+          "user clicks Clear All → confirmation dialog; on confirm, selection cleared"
+        ],
+        "produces": [
+          { "name": "select-products-step", "kind": "component" },
+          { "name": "product-selection-table", "kind": "component" },
+          { "name": "product-picker-modal", "kind": "component" },
+          { "name": "selectedProducts", "kind": "state" }
+        ],
+        "consumes": [
+          { "name": "Product", "kind": "type" },
+          { "name": "product-catalog-store", "kind": "state" },
+          { "name": "report-draft-store", "kind": "state" }
+        ],
+        "frames": [
+          { "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\figma\\select-products-empty.png", "depicts": "empty selection table with placeholder copy and primary Add Product button" },
+          { "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\figma\\select-products-filled.png", "depicts": "filled state with three selected products and remove buttons" },
+          { "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\figma\\product-picker-modal.png", "depicts": "modal with searchable product list and category filter chips" }
+        ],
+        "ambiguities": [
+          "no copy specified for the remove-product tooltip",
+          "design shows 3-column table; ticket doesn't specify hidden columns on small viewports"
+        ],
+        "ticketDesignConflicts": [
+          "ticket says 'user can add max 5 products'; design shows no disabled state or limit indicator"
+        ],
+        "openQuestions": [
+          "Should the product-picker modal filter by organization or list everything?"
+        ]
+      },
+      "plan": {
+        "files": [
+          "apps/web/src/features/wizard/steps/SelectProducts.tsx",
+          "apps/web/src/features/wizard/steps/SelectProducts.module.css",
+          "apps/web/src/features/products/ProductPickerModal.tsx",
+          "apps/web/src/features/products/ProductSelectionTable.tsx",
+          "apps/web/src/features/wizard/draftStore.ts"
+        ],
+        "notes": [
+          "Wire selectedProducts into existing report-draft-store (extend slice).",
+          "Modal uses existing Dialog component from @axon/ui.",
+          "Enforce 5-product max from ticket; show inline limit copy when reached."
+        ],
+        "verification": {
+          "frame": "select-products-filled.png",
+          "route": "/reports/create/step-2",
+          "walkInSteps": "Navigate to /reports/create. Click Next on Step 1. Land on Step 2; click Add Product twice and select two products. Capture both empty and filled states."
+        }
+      },
+      "dependsOn": [{ "storyKey": "AX-967", "viaLabel": "Product", "kind": "type" }],
+      "verification": {
+        "iterations": [
+          {
+            "index": 1,
+            "startedAt": "2026-05-04T14:09:30.000Z",
+            "endedAt": "2026-05-04T14:10:15.000Z",
+            "discrepancies": [
+              "Table background is light gray; design shows white",
+              "Row spacing is tighter than design (2px gap vs 8px)",
+              "Add Product button alignment off — left-aligned but design shows right-aligned in toolbar"
+            ],
+            "outcome": "fixed-and-retrying",
+            "fixCommitSha": "a3f8c92"
+          },
+          {
+            "index": 2,
+            "startedAt": "2026-05-04T14:10:45.000Z",
+            "endedAt": "2026-05-04T14:11:25.000Z",
+            "discrepancies": [],
+            "outcome": "matched"
+          }
+        ],
+        "finalState": "matched"
+      },
+      "contextDir": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968",
+      "artifacts": {
+        "ticketMd": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\ticket.md",
+        "framesJson": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\figma\\frames.json",
+        "framePngs": [
+          "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\figma\\select-products-empty.png",
+          "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\figma\\select-products-filled.png",
+          "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\figma\\product-picker-modal.png"
+        ],
+        "implementationPng": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-968\\implementation.png"
+      },
+      "timing": {
+        "firstEventAt": "2026-05-04T14:08:00.000Z",
+        "lastEventAt": "2026-05-04T14:11:30.000Z",
+        "durationMs": 210000
+      },
+      "tokens": { "input": 168400, "output": 22800, "cacheRead": 612000, "cacheCreation": 48200 }
+    },
+    {
+      "key": "AX-969",
+      "title": "Header avatar dropdown",
+      "url": "https://trgscreen.atlassian.net/browse/AX-969",
+      "order": 3,
+      "status": "shipped",
+      "branch": {
+        "name": "ax-966-header-avatar-dropdown",
+        "base": "ax-966-select-products-step",
+        "createPrUrl": "https://bitbucket.org/trgscreen/axon-clients/pull-requests/new?source=ax-966-header-avatar-dropdown&dest=ax-966-select-products-step"
+      },
+      "analysis": {
+        "storyKey": "AX-969",
+        "intent": "Add a user avatar in the app header that opens a dropdown menu with profile, preferences, and sign-out actions.",
+        "surfaces": ["global app header (right side)", "dropdown menu with three actions"],
+        "behaviors": [
+          "user clicks avatar → dropdown opens below avatar with a fade transition",
+          "user clicks Sign out → confirmation dialog; on confirm, calls auth.signOut()",
+          "user clicks Preferences → navigates to /preferences",
+          "user clicks outside dropdown → dropdown closes"
+        ],
+        "produces": [{ "name": "header-avatar-dropdown", "kind": "component" }],
+        "consumes": [
+          { "name": "current-user", "kind": "state" },
+          { "name": "auth-service", "kind": "service" }
+        ],
+        "frames": [],
+        "ambiguities": [
+          "no design provided — implementation will follow existing dropdown patterns from @axon/ui",
+          "tooltip on hover not specified"
+        ],
+        "ticketDesignConflicts": [],
+        "openQuestions": [
+          "Should the avatar fall back to initials if user has no profile photo? Ticket doesn't specify."
+        ]
+      },
+      "plan": {
+        "files": [
+          "apps/web/src/components/header/HeaderAvatar.tsx",
+          "apps/web/src/components/header/AvatarDropdown.tsx"
+        ],
+        "notes": [
+          "Reuse Dropdown primitive from @axon/ui.",
+          "Fall back to initials when avatarUrl is null — matches existing convention in CommentList."
+        ]
+      },
+      "dependsOn": [],
+      "verification": {
+        "iterations": [
+          {
+            "index": 1,
+            "startedAt": "2026-05-04T14:12:30.000Z",
+            "endedAt": "2026-05-04T14:13:00.000Z",
+            "discrepancies": [],
+            "outcome": "matched"
+          }
+        ],
+        "finalState": "matched"
+      },
+      "contextDir": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-969",
+      "artifacts": {
+        "ticketMd": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-969\\ticket.md",
+        "framePngs": [],
+        "implementationPng": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-969\\implementation.png"
+      },
+      "timing": {
+        "firstEventAt": "2026-05-04T14:11:30.000Z",
+        "lastEventAt": "2026-05-04T14:13:00.000Z",
+        "durationMs": 90000
+      },
+      "tokens": { "input": 56200, "output": 7400, "cacheRead": 198400, "cacheCreation": 14800 }
+    },
+    {
+      "key": "AX-970",
+      "title": "Quote summary panel",
+      "url": "https://trgscreen.atlassian.net/browse/AX-970",
+      "order": 4,
+      "status": "verifying",
+      "branch": {
+        "name": "ax-966-quote-summary-panel",
+        "base": "ax-966-header-avatar-dropdown"
+      },
+      "analysis": {
+        "storyKey": "AX-970",
+        "intent": "Build the quote summary panel that shows on the final wizard step — lists selected products with totals, taxes, and final price; serves as the review screen before submission.",
+        "surfaces": [
+          "Create Report wizard — final step (quote summary)",
+          "summary card with line items, subtotal, tax, total"
+        ],
+        "behaviors": [
+          "panel renders all selectedProducts with quantity, list price, line total",
+          "subtotal updates as quantities change",
+          "tax line computed from configured tax rate",
+          "total price emphasized in larger type at bottom"
+        ],
+        "produces": [
+          { "name": "quote-summary-panel", "kind": "component" },
+          { "name": "computeQuoteTotals", "kind": "selector" }
+        ],
+        "consumes": [
+          { "name": "selectedProducts", "kind": "state" },
+          { "name": "Product", "kind": "type" },
+          { "name": "tax-rate-config", "kind": "config" }
+        ],
+        "frames": [
+          { "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970\\figma\\quote-summary-default.png", "depicts": "default state with three line items and totals" },
+          { "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970\\figma\\quote-summary-empty.png", "depicts": "empty state shown if user navigates back here with no products selected" }
+        ],
+        "ambiguities": [
+          "currency formatting not specified — assume USD with two decimals based on design",
+          "tax rate source not specified beyond 'configured rate'"
+        ],
+        "ticketDesignConflicts": [],
+        "openQuestions": []
+      },
+      "plan": {
+        "files": [
+          "apps/web/src/features/wizard/steps/QuoteSummary.tsx",
+          "apps/web/src/features/wizard/steps/QuoteSummary.module.css",
+          "apps/web/src/features/products/computeQuoteTotals.ts"
+        ],
+        "notes": [
+          "Use Intl.NumberFormat for currency — follows ProductPriceLabel.",
+          "Tax rate read from app config (existing pattern, not new mechanism)."
+        ],
+        "verification": {
+          "frame": "quote-summary-default.png",
+          "route": "/reports/create/review",
+          "walkInSteps": "Complete wizard up to review step with three products selected (varying quantities). Capture rendered summary."
+        }
+      },
+      "dependsOn": [{ "storyKey": "AX-968", "viaLabel": "selectedProducts", "kind": "state" }],
+      "verification": {
+        "iterations": [
+          {
+            "index": 1,
+            "startedAt": "2026-05-04T14:14:00.000Z",
+            "endedAt": "2026-05-04T14:14:50.000Z",
+            "discrepancies": [
+              "Total price typography too small (24px vs 32px in design)",
+              "Subtotal/Tax/Total alignment column off by 12px",
+              "Line item separators missing"
+            ],
+            "outcome": "fixed-and-retrying",
+            "fixCommitSha": "b9d2e74"
+          }
+        ]
+      },
+      "contextDir": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970",
+      "artifacts": {
+        "ticketMd": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970\\ticket.md",
+        "framesJson": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970\\figma\\frames.json",
+        "framePngs": [
+          "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970\\figma\\quote-summary-default.png",
+          "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970\\figma\\quote-summary-empty.png"
+        ],
+        "implementationPng": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-970\\implementation.png"
+      },
+      "timing": {
+        "firstEventAt": "2026-05-04T14:13:00.000Z",
+        "lastEventAt": "2026-05-04T14:14:55.000Z",
+        "durationMs": 115000
+      },
+      "tokens": { "input": 42000, "output": 6500, "cacheRead": 110000, "cacheCreation": 12000 }
+    },
+    {
+      "key": "AX-971",
+      "title": "Submit & email",
+      "url": "https://trgscreen.atlassian.net/browse/AX-971",
+      "order": 5,
+      "status": "planned",
+      "analysis": {
+        "storyKey": "AX-971",
+        "intent": "Wire the submit button on the review step to persist the quote and email the configured recipient.",
+        "surfaces": [
+          "Create Report wizard — review step submit button",
+          "post-submit confirmation toast"
+        ],
+        "behaviors": [
+          "user clicks Submit → button shows spinner and disables",
+          "on success → toast confirms; navigation to /reports redirects user",
+          "on failure → inline error banner above submit button with retry"
+        ],
+        "produces": [{ "name": "submit-quote-action", "kind": "service" }],
+        "consumes": [
+          { "name": "selectedProducts", "kind": "state" },
+          { "name": "report-draft-store", "kind": "state" },
+          { "name": "quotes-api", "kind": "endpoint" },
+          { "name": "email-service", "kind": "service" }
+        ],
+        "frames": [
+          { "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-971\\figma\\submit-loading.png", "depicts": "submit button mid-loading with spinner" },
+          { "path": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-971\\figma\\submit-error.png", "depicts": "error state with inline banner and retry" }
+        ],
+        "ambiguities": ["retry-on-failure behavior not specified beyond manual click"],
+        "ticketDesignConflicts": [],
+        "openQuestions": []
+      },
+      "plan": {
+        "files": [
+          "apps/web/src/features/wizard/steps/Review.tsx",
+          "apps/web/src/features/wizard/api/submitQuote.ts"
+        ],
+        "notes": [
+          "submitQuote calls existing /api/quotes endpoint, then triggers email via existing email-service.",
+          "Use existing Toast and ErrorBanner components."
+        ]
+      },
+      "dependsOn": [{ "storyKey": "AX-968", "viaLabel": "selectedProducts", "kind": "state" }],
+      "contextDir": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-971",
+      "artifacts": {
+        "ticketMd": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-971\\ticket.md",
+        "framesJson": "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-971\\figma\\frames.json",
+        "framePngs": [
+          "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-971\\figma\\submit-loading.png",
+          "c:\\projects\\axon-clients\\.claude-feature-context\\AX-966\\AX-971\\figma\\submit-error.png"
+        ]
+      },
+      "timing": { "durationMs": 0 },
+      "tokens": { "input": 0, "output": 0, "cacheRead": 0, "cacheCreation": 0 }
+    }
+  ],
+  "graph": {
+    "edges": [
+      { "from": "AX-967", "to": "AX-968", "viaLabel": "Product", "kind": "type" },
+      { "from": "AX-968", "to": "AX-970", "viaLabel": "selectedProducts", "kind": "state" },
+      { "from": "AX-968", "to": "AX-971", "viaLabel": "selectedProducts", "kind": "state" }
+    ],
+    "cycles": []
+  },
+  "events": [
+    { "kind": "phase.start", "eventId": "evt-001", "t": "2026-05-04T14:00:00.000Z", "phaseId": "phase-1" },
+    { "kind": "tool.call", "eventId": "evt-002", "t": "2026-05-04T14:00:02.000Z", "toolName": "Bash", "args": { "command": "pwsh check-config.ps1", "description": "Validate JIRA env vars and tools" }, "phaseId": "phase-1" },
+    { "kind": "tool.result", "eventId": "evt-003", "refEventId": "evt-002", "t": "2026-05-04T14:00:03.000Z", "durationMs": 1000, "ok": true, "resultDigest": "OK — JIRA_URL, JIRA_USERNAME, JIRA_API_TOKEN, node, git all present." },
+    { "kind": "user.message", "eventId": "evt-004", "t": "2026-05-04T14:00:08.000Z", "phaseId": "phase-1", "role": "assistant", "textDigest": "I'll build AX-966 (Quote Builder). Quick context check first…" },
+    { "kind": "user.message", "eventId": "evt-005", "t": "2026-05-04T14:00:35.000Z", "phaseId": "phase-1", "role": "user", "textDigest": "Repo is c:/projects/axon-clients, base is main. Zustand for state, Tailwind for styling…" },
+    { "kind": "phase.end", "eventId": "evt-006", "t": "2026-05-04T14:00:45.000Z", "phaseId": "phase-1" },
+
+    { "kind": "phase.start", "eventId": "evt-007", "t": "2026-05-04T14:00:45.000Z", "phaseId": "phase-2" },
+    { "kind": "agent.start", "eventId": "evt-008", "t": "2026-05-04T14:00:48.000Z", "agentType": "agent-jira", "phaseId": "phase-2", "promptDigest": "Fetch AX-966 + child stories…" },
+    { "kind": "agent.end", "eventId": "evt-009", "refEventId": "evt-008", "t": "2026-05-04T14:01:25.000Z", "durationMs": 37000, "ok": true, "outputDigest": "Returned 5 stories. 4 had figmaUrls; AX-969 had none.", "tokens": { "input": 12400, "output": 1850, "cacheRead": 8200, "cacheCreation": 4100 } },
+    { "kind": "note", "eventId": "evt-010", "t": "2026-05-04T14:01:27.000Z", "text": "User clarified: epic + stories, not single story with subtasks." },
+    { "kind": "agent.start", "eventId": "evt-011", "t": "2026-05-04T14:01:30.000Z", "agentType": "agent-figma", "storyKey": "AX-967", "phaseId": "phase-2", "promptDigest": "1 url" },
+    { "kind": "agent.start", "eventId": "evt-012", "t": "2026-05-04T14:01:30.500Z", "agentType": "agent-figma", "storyKey": "AX-968", "phaseId": "phase-2", "promptDigest": "3 urls" },
+    { "kind": "agent.start", "eventId": "evt-013", "t": "2026-05-04T14:01:31.000Z", "agentType": "agent-figma", "storyKey": "AX-970", "phaseId": "phase-2", "promptDigest": "2 urls" },
+    { "kind": "agent.start", "eventId": "evt-014", "t": "2026-05-04T14:01:31.500Z", "agentType": "agent-figma", "storyKey": "AX-971", "phaseId": "phase-2", "promptDigest": "2 urls" },
+    { "kind": "agent.end", "eventId": "evt-015", "refEventId": "evt-011", "t": "2026-05-04T14:01:48.000Z", "durationMs": 18000, "ok": true, "outputDigest": "saved: 1, failed: 0" },
+    { "kind": "agent.end", "eventId": "evt-016", "refEventId": "evt-013", "t": "2026-05-04T14:01:55.000Z", "durationMs": 24500, "ok": true, "outputDigest": "saved: 2, failed: 0" },
+    { "kind": "agent.end", "eventId": "evt-017", "refEventId": "evt-014", "t": "2026-05-04T14:02:05.000Z", "durationMs": 33500, "ok": true, "outputDigest": "saved: 2, failed: 0" },
+    { "kind": "agent.end", "eventId": "evt-018", "refEventId": "evt-012", "t": "2026-05-04T14:02:20.000Z", "durationMs": 49500, "ok": true, "outputDigest": "saved: 3, failed: 0" },
+    { "kind": "phase.end", "eventId": "evt-019", "t": "2026-05-04T14:02:30.000Z", "phaseId": "phase-2" },
+
+    { "kind": "phase.start", "eventId": "evt-020", "t": "2026-05-04T14:02:30.000Z", "phaseId": "phase-3" },
+    { "kind": "agent.start", "eventId": "evt-021", "t": "2026-05-04T14:02:32.000Z", "agentType": "agent-analyzer", "storyKey": "AX-967", "phaseId": "phase-3", "promptDigest": "ticketMd + 1 frame" },
+    { "kind": "agent.start", "eventId": "evt-022", "t": "2026-05-04T14:02:32.100Z", "agentType": "agent-analyzer", "storyKey": "AX-968", "phaseId": "phase-3", "promptDigest": "ticketMd + 3 frames" },
+    { "kind": "agent.start", "eventId": "evt-023", "t": "2026-05-04T14:02:32.200Z", "agentType": "agent-analyzer", "storyKey": "AX-969", "phaseId": "phase-3", "promptDigest": "ticketMd, no frames" },
+    { "kind": "agent.start", "eventId": "evt-024", "t": "2026-05-04T14:02:32.300Z", "agentType": "agent-analyzer", "storyKey": "AX-970", "phaseId": "phase-3", "promptDigest": "ticketMd + 2 frames" },
+    { "kind": "agent.start", "eventId": "evt-025", "t": "2026-05-04T14:02:32.400Z", "agentType": "agent-analyzer", "storyKey": "AX-971", "phaseId": "phase-3", "promptDigest": "ticketMd + 2 frames" },
+    { "kind": "agent.end", "eventId": "evt-026", "refEventId": "evt-023", "t": "2026-05-04T14:03:18.000Z", "durationMs": 45800, "ok": true, "outputDigest": "intent: Add user avatar dropdown…", "tokens": { "input": 9800, "output": 980, "cacheRead": 7200, "cacheCreation": 1900 } },
+    { "kind": "agent.end", "eventId": "evt-027", "refEventId": "evt-021", "t": "2026-05-04T14:03:32.000Z", "durationMs": 60000, "ok": true, "outputDigest": "intent: Define Product type and catalog store…", "tokens": { "input": 11200, "output": 1140, "cacheRead": 8400, "cacheCreation": 2200 } },
+    { "kind": "agent.end", "eventId": "evt-028", "refEventId": "evt-025", "t": "2026-05-04T14:03:48.000Z", "durationMs": 75600, "ok": true, "outputDigest": "intent: Wire submit button…", "tokens": { "input": 12100, "output": 1280, "cacheRead": 9100, "cacheCreation": 2400 } },
+    { "kind": "agent.end", "eventId": "evt-029", "refEventId": "evt-024", "t": "2026-05-04T14:03:55.000Z", "durationMs": 82700, "ok": true, "outputDigest": "intent: Quote summary panel…", "tokens": { "input": 13400, "output": 1420, "cacheRead": 9800, "cacheCreation": 2600 } },
+    { "kind": "agent.end", "eventId": "evt-030", "refEventId": "evt-022", "t": "2026-05-04T14:04:02.000Z", "durationMs": 89700, "ok": true, "outputDigest": "intent: Build product-selection step…", "tokens": { "input": 14600, "output": 1680, "cacheRead": 11200, "cacheCreation": 2900 } },
+    { "kind": "user.message", "eventId": "evt-031", "t": "2026-05-04T14:04:05.000Z", "phaseId": "phase-3", "role": "assistant", "textDigest": "Three gap questions: (1) AX-968 max 5 enforce? (2) Avatar fallback to initials? (3) Product picker filter scope?" },
+    { "kind": "user.message", "eventId": "evt-032", "t": "2026-05-04T14:04:12.000Z", "phaseId": "phase-3", "role": "user", "textDigest": "(1) Yes enforce 5 max. (2) Initials fallback. (3) By org." },
+    { "kind": "phase.end", "eventId": "evt-033", "t": "2026-05-04T14:04:15.000Z", "phaseId": "phase-3" },
+
+    { "kind": "phase.start", "eventId": "evt-034", "t": "2026-05-04T14:04:15.000Z", "phaseId": "phase-4" },
+    { "kind": "tool.call", "eventId": "evt-035", "t": "2026-05-04T14:04:30.000Z", "toolName": "Write", "args": { "file_path": "PLAN.md" }, "phaseId": "phase-4" },
+    { "kind": "tool.result", "eventId": "evt-036", "refEventId": "evt-035", "t": "2026-05-04T14:04:31.000Z", "durationMs": 1100, "ok": true, "resultDigest": "PLAN.md written" },
+    { "kind": "user.message", "eventId": "evt-037", "t": "2026-05-04T14:04:35.000Z", "phaseId": "phase-4", "role": "assistant", "textDigest": "Plan written. Order proposed. Confirm or revise?" },
+    { "kind": "user.message", "eventId": "evt-038", "t": "2026-05-04T14:05:02.000Z", "phaseId": "phase-4", "role": "user", "textDigest": "Move AX-969 after AX-968 — less context-switching." },
+    { "kind": "note", "eventId": "evt-039", "t": "2026-05-04T14:05:03.000Z", "text": "User revised plan once before confirming." },
+    { "kind": "tool.call", "eventId": "evt-040", "t": "2026-05-04T14:05:10.000Z", "toolName": "Edit", "args": { "file_path": "PLAN.md" }, "phaseId": "phase-4" },
+    { "kind": "tool.result", "eventId": "evt-041", "refEventId": "evt-040", "t": "2026-05-04T14:05:11.000Z", "durationMs": 1200, "ok": true, "resultDigest": "PLAN.md updated" },
+    { "kind": "user.message", "eventId": "evt-042", "t": "2026-05-04T14:05:25.000Z", "phaseId": "phase-4", "role": "user", "textDigest": "Confirmed. Go." },
+    { "kind": "phase.end", "eventId": "evt-043", "t": "2026-05-04T14:05:30.000Z", "phaseId": "phase-4" },
+
+    { "kind": "phase.start", "eventId": "evt-044", "t": "2026-05-04T14:05:30.000Z", "phaseId": "phase-5" },
+
+    { "kind": "story.status", "eventId": "evt-045", "t": "2026-05-04T14:05:30.000Z", "storyKey": "AX-967", "from": "planned", "to": "implementing" },
+    { "kind": "tool.call", "eventId": "evt-046", "t": "2026-05-04T14:05:32.000Z", "toolName": "Bash", "args": { "command": "git checkout -b ax-966-product-catalog-model" }, "phaseId": "phase-5", "storyKey": "AX-967" },
+    { "kind": "tool.result", "eventId": "evt-047", "refEventId": "evt-046", "t": "2026-05-04T14:05:34.000Z", "durationMs": 1900, "ok": true, "resultDigest": "Switched to new branch" },
+    { "kind": "tool.call", "eventId": "evt-048", "t": "2026-05-04T14:06:00.000Z", "toolName": "Write", "args": { "file_path": "apps/web/src/features/products/types.ts" }, "phaseId": "phase-5", "storyKey": "AX-967" },
+    { "kind": "tool.result", "eventId": "evt-049", "refEventId": "evt-048", "t": "2026-05-04T14:06:01.000Z", "durationMs": 800, "ok": true, "resultDigest": "types.ts created" },
+    { "kind": "story.status", "eventId": "evt-052", "t": "2026-05-04T14:07:30.000Z", "storyKey": "AX-967", "from": "implementing", "to": "verifying" },
+    { "kind": "agent.start", "eventId": "evt-053", "t": "2026-05-04T14:07:32.000Z", "agentType": "agent-playwright", "storyKey": "AX-967", "phaseId": "phase-5", "promptDigest": "smoke test" },
+    { "kind": "agent.end", "eventId": "evt-055", "refEventId": "evt-053", "t": "2026-05-04T14:07:58.000Z", "durationMs": 26000, "ok": true, "outputDigest": "No material discrepancies", "tokens": { "input": 18200, "output": 2100, "cacheRead": 38600, "cacheCreation": 4200 } },
+    { "kind": "verification.iteration", "eventId": "evt-054", "t": "2026-05-04T14:07:59.000Z", "storyKey": "AX-967", "index": 1, "outcome": "matched" },
+    { "kind": "tool.call", "eventId": "evt-056", "t": "2026-05-04T14:07:59.500Z", "toolName": "Bash", "args": { "command": "git push" }, "phaseId": "phase-5", "storyKey": "AX-967" },
+    { "kind": "tool.result", "eventId": "evt-057", "refEventId": "evt-056", "t": "2026-05-04T14:08:00.000Z", "durationMs": 1100, "ok": true, "resultDigest": "Pushed" },
+    { "kind": "story.status", "eventId": "evt-058", "t": "2026-05-04T14:08:00.000Z", "storyKey": "AX-967", "from": "verifying", "to": "shipped" },
+
+    { "kind": "story.status", "eventId": "evt-059", "t": "2026-05-04T14:08:00.000Z", "storyKey": "AX-968", "from": "planned", "to": "implementing" },
+    { "kind": "tool.call", "eventId": "evt-062", "t": "2026-05-04T14:08:25.000Z", "toolName": "Write", "args": { "file_path": "apps/web/src/features/wizard/steps/SelectProducts.tsx" }, "phaseId": "phase-5", "storyKey": "AX-968" },
+    { "kind": "tool.result", "eventId": "evt-063", "refEventId": "evt-062", "t": "2026-05-04T14:08:26.000Z", "durationMs": 1300, "ok": true, "resultDigest": "Created" },
+    { "kind": "story.status", "eventId": "evt-068", "t": "2026-05-04T14:09:30.000Z", "storyKey": "AX-968", "from": "implementing", "to": "verifying" },
+    { "kind": "agent.start", "eventId": "evt-069", "t": "2026-05-04T14:09:32.000Z", "agentType": "agent-playwright", "storyKey": "AX-968", "phaseId": "phase-5", "promptDigest": "Step 2 capture" },
+    { "kind": "agent.end", "eventId": "evt-071", "refEventId": "evt-069", "t": "2026-05-04T14:10:13.000Z", "durationMs": 41000, "ok": true, "outputDigest": "3 discrepancies: bg, spacing, alignment", "tokens": { "input": 22600, "output": 3100, "cacheRead": 56400, "cacheCreation": 6200 } },
+    { "kind": "verification.iteration", "eventId": "evt-070", "t": "2026-05-04T14:10:14.000Z", "storyKey": "AX-968", "index": 1, "outcome": "fixed-and-retrying" },
+    { "kind": "agent.start", "eventId": "evt-076", "t": "2026-05-04T14:10:48.000Z", "agentType": "agent-playwright", "storyKey": "AX-968", "phaseId": "phase-5", "promptDigest": "re-verify" },
+    { "kind": "agent.end", "eventId": "evt-078", "refEventId": "evt-076", "t": "2026-05-04T14:11:23.000Z", "durationMs": 35000, "ok": true, "outputDigest": "No material discrepancies", "tokens": { "input": 24800, "output": 2400, "cacheRead": 64200, "cacheCreation": 5400 } },
+    { "kind": "verification.iteration", "eventId": "evt-077", "t": "2026-05-04T14:11:24.000Z", "storyKey": "AX-968", "index": 2, "outcome": "matched" },
+    { "kind": "story.status", "eventId": "evt-081", "t": "2026-05-04T14:11:30.000Z", "storyKey": "AX-968", "from": "verifying", "to": "shipped" },
+
+    { "kind": "story.status", "eventId": "evt-082", "t": "2026-05-04T14:11:30.000Z", "storyKey": "AX-969", "from": "planned", "to": "implementing" },
+    { "kind": "story.status", "eventId": "evt-091", "t": "2026-05-04T14:12:30.000Z", "storyKey": "AX-969", "from": "implementing", "to": "verifying" },
+    { "kind": "agent.start", "eventId": "evt-092", "t": "2026-05-04T14:12:32.000Z", "agentType": "agent-playwright", "storyKey": "AX-969", "phaseId": "phase-5", "promptDigest": "dropdown smoke" },
+    { "kind": "agent.end", "eventId": "evt-094", "refEventId": "evt-092", "t": "2026-05-04T14:12:55.000Z", "durationMs": 23000, "ok": true, "outputDigest": "No material discrepancies", "tokens": { "input": 16400, "output": 1900, "cacheRead": 31200, "cacheCreation": 3800 } },
+    { "kind": "verification.iteration", "eventId": "evt-093", "t": "2026-05-04T14:12:56.000Z", "storyKey": "AX-969", "index": 1, "outcome": "matched" },
+    { "kind": "story.status", "eventId": "evt-097", "t": "2026-05-04T14:13:00.000Z", "storyKey": "AX-969", "from": "verifying", "to": "shipped" },
+
+    { "kind": "story.status", "eventId": "evt-098", "t": "2026-05-04T14:13:00.000Z", "storyKey": "AX-970", "from": "planned", "to": "implementing" },
+    { "kind": "tool.call", "eventId": "evt-099", "t": "2026-05-04T14:13:02.000Z", "toolName": "Bash", "args": { "command": "git checkout -b ax-966-quote-summary-panel" }, "phaseId": "phase-5", "storyKey": "AX-970" },
+    { "kind": "tool.result", "eventId": "evt-100", "refEventId": "evt-099", "t": "2026-05-04T14:13:03.000Z", "durationMs": 700, "ok": true, "resultDigest": "Switched" },
+    { "kind": "tool.call", "eventId": "evt-101", "t": "2026-05-04T14:13:30.000Z", "toolName": "Write", "args": { "file_path": "apps/web/src/features/wizard/steps/QuoteSummary.tsx" }, "phaseId": "phase-5", "storyKey": "AX-970" },
+    { "kind": "tool.result", "eventId": "evt-102", "refEventId": "evt-101", "t": "2026-05-04T14:13:31.000Z", "durationMs": 1300, "ok": true, "resultDigest": "Created" },
+    { "kind": "tool.call", "eventId": "evt-103", "t": "2026-05-04T14:13:55.000Z", "toolName": "Write", "args": { "file_path": "apps/web/src/features/products/computeQuoteTotals.ts" }, "phaseId": "phase-5", "storyKey": "AX-970" },
+    { "kind": "tool.result", "eventId": "evt-104", "refEventId": "evt-103", "t": "2026-05-04T14:13:56.000Z", "durationMs": 900, "ok": true, "resultDigest": "Created" },
+    { "kind": "story.status", "eventId": "evt-105", "t": "2026-05-04T14:14:00.000Z", "storyKey": "AX-970", "from": "implementing", "to": "verifying" },
+    { "kind": "agent.start", "eventId": "evt-106", "t": "2026-05-04T14:14:02.000Z", "agentType": "agent-playwright", "storyKey": "AX-970", "phaseId": "phase-5", "promptDigest": "review step capture" },
+    { "kind": "agent.end", "eventId": "evt-108", "refEventId": "evt-106", "t": "2026-05-04T14:14:48.000Z", "durationMs": 46000, "ok": true, "outputDigest": "3 discrepancies: typography, alignment, separators", "tokens": { "input": 23800, "output": 3300, "cacheRead": 68400, "cacheCreation": 7200 } },
+    { "kind": "verification.iteration", "eventId": "evt-107", "t": "2026-05-04T14:14:49.000Z", "storyKey": "AX-970", "index": 1, "outcome": "fixed-and-retrying" },
+    { "kind": "tool.call", "eventId": "evt-109", "t": "2026-05-04T14:14:55.000Z", "toolName": "Edit", "args": { "file_path": "apps/web/src/features/wizard/steps/QuoteSummary.module.css" }, "phaseId": "phase-5", "storyKey": "AX-970" }
+  ]
+}
